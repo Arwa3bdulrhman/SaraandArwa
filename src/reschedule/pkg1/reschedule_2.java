@@ -23,6 +23,19 @@ public class reschedule_2 {
             int result=0;
             return result;
         }
+        
+        public static void Task_shift(int index_start_put, int task_ID, int period, String Task_name, String femplyee_id_1,String semplyee_id_1, int terminal)
+        {
+            //shift(index_start_put,task_ID,period,Task_name,first_emplyee_id,second_emplyee_id,Deadline,periorty,Tj_save[no_of_culomns],terminal);
+            if (selected_id!=0)
+            {
+                
+            }
+            /*
+            
+            */
+        }
+        
          public static int make_decision(String Task_name,int period_1,Date deadline_1, int priority_1 , String femplyee_id_1,String semplyee_id_1, Date added_date_1)
         {
             //انت مؤقتة
@@ -43,6 +56,7 @@ public class reschedule_2 {
         int selected_id=0;
         boolean reschudle_finished=false;
         int index_start_put;
+        //********************************************************** -----------> { priority 1 }
         for(int i=start_index_search; i <= terminal; i++)
         {
             ////////////////////////////////////////////////////////////////////////// 1
@@ -72,6 +86,7 @@ public class reschedule_2 {
     }
         catch(Exception ex){
         JOptionPane.showMessageDialog(null, "fail inserted "+ex);
+        }
         
         ///////////////////////////////////////////////////////////////////////// 2
          int pre_Tj_ID =0;
@@ -156,7 +171,7 @@ public class reschedule_2 {
                                     {
                                         selected_id=Tj_ID; //temporary
                                     }
-                                    if (i==terminal)
+                                    if (i==terminal) ////////////////////////????????وراها مكررة؟
                                     {
                                         index_start_put=start_index_search; // just in 7, 8 priority
                                         //Tj_save[no_of_culomns]=selected_id;//ناقصها تكون زي المخزن يحفظ كامل معلومات التي جي عشان ما نفقدها ونوديها تسوي ريسكجول
@@ -166,13 +181,48 @@ public class reschedule_2 {
                                         break;
                                     }
                             }
+                            else if (Tj_priority == priority)//////////////شكل الجي الثانية الي كانت موجودة هي للاندكس؟! 
+                            {
+                                // shift to second employee
+                                selected_id=0;
+                                if (current_emplyee_id == femplyee_id)
+                                {
+                                    current_emplyee_id = semplyee_id;
+                                    Task_Reschedule(start_index_search,period,Task_ID,current_emplyee_id,femplyee_id,semplyee_id,Deadline,priority);
+                                }
+                                else 
+                                { 
+                                    //make_ decision(Task_name,period,deadline,priority , femplyee_id,semplyee_id,added_date);
+                                }
+                                break;
+                            }
+                        }
+                        else if (Tj_priority > priority) //في حالة اذا 8 ميتينق مهم   
+                        {
+                            selected_id=0;
+                            if (current_emplyee_id == femplyee_id)
+                            {
+                                current_emplyee_id = semplyee_id;
+                                Task_Reschedule(start_index_search,period,Task_ID,current_emplyee_id,femplyee_id,semplyee_id,Deadline,priority);
+                            }
                             else
                             {
-                                if(Tj_priority < priority)
-                                {
-                                }
-                                
+                                //make_ decision(Task_name,period,deadline,priority , femplyee_id,semplyee_id,added_date);
                             }
+                            break;
+                        }
+                    }
+        }
+            
+
+
+                        
+
+
+                            
+                                
+                                
+                            
                           
                                         
 
