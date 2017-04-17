@@ -9,8 +9,8 @@ package reschedule.pkg1;
  *
  * @author w10
  */
-public class Reschedule1 {
-
+public class Reschedule1
+{
     /**
      * @param args the command line arguments
      */
@@ -31,6 +31,12 @@ public class Reschedule1 {
         //current_emplyee_id;
         //femplyee_id;
         //semplyee_id;
+        DBconnect connect = new DBconnect();
+        connect getData();
+    }
+        
+        
+        
         
         start_index_search = cuurent_index+1;
         terminal = start_index_search +Ts_period -1;
