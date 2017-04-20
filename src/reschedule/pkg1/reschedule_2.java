@@ -23,15 +23,16 @@ import java.util.concurrent.TimeUnit;
 public class reschedule_2 {
     
     
-    public static void main(String args[]) {
+    public  void main(String args[]) {
                     //Task_Reschedule(start_index_search, Task_ID, period, Deadline, priority, current_emplyee_id, femplyee_id, semplyee_id);
-                    //GetCurrentIndex(current index);
+                   // GetCurrentIndex(currentIndex);
 
 }
     
     
-    public static int GetCurrentIndex(int currentIndex) 
+    public  int GetCurrentIndex() 
             {
+                int currentIndex = 0;
                 DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
    Date currentDate=new Date();
 
@@ -89,23 +90,14 @@ String formattedDate;
             }
     
                 
-            }
-    
-    
-    
-    
-    
-    
-    
-    
-    
             
-    int selected_id=0;
+    //int selected_id=0;
     
 
 
         public static int reminder_availabiliy(String Task_ID, int current_index_r, int period_r)// current emp, id task, 
         {
+            //reminder_availabiliy(String Task_ID, int current_index_r, int period_r)
             // سو مانحتاج الكرنت امب
             //الكرنت امبلوي شكله عشان الكرنت اندكس
             //يبي لنا جدول تتبع التاس للتيستنق لكل فاريابل
@@ -214,6 +206,7 @@ String formattedDate;
         {
             // عطاني ايرور مع  سيليكت فشلت الستاتيك
             //shift(index_start_put,task_ID,period,Task_name,first_emplyee_id,second_emplyee_id,Deadline,periorty,Tj_save[no_of_culomns],terminal);
+            // هنا كويري التمبراري
             if (selected_id != 0)
             {
                 
@@ -249,11 +242,16 @@ String formattedDate;
 
     
     //public static void //current time
+         
+         
+         ////////////////////////////////////////////////////////////////////////////////////////////////////
+         //////////////////////////////////////////////////////////////////////////////////////////////////// reshedule
 
         
     public  void Task_Reschedule(int start_index_search, String Task_ID, int period, Date Deadline,int priority, String current_emplyee_id, String femplyee_id, String semplyee_id)
     {
-        
+        //Task_Reschedule(start_index_search, Task_ID, period, Deadline,priority, current_emplyee_id, femplyee_id, semplyee_id);
+
         int terminal= 0;
         int comp;
         int selected_id=0;
@@ -263,6 +261,8 @@ String formattedDate;
         terminal=start_index_search + period -1;
         //cuurent_index
         //start_index_search = cuurent_index + 1; // اي اضافة للتاسك تكون للاندكس بعد الحالي ماينفع يضيف شي في نفس الوقت 
+        //int currentIndex_s = 0;
+        int current_index = GetCurrentIndex();
         
         
         //********************************************************** -----------> { priority 1 }
@@ -363,13 +363,17 @@ String formattedDate;
                             if(Tj_priority < priority)
                             {
                                 selected_id=0;
-                                if(Tj_priority == 6 && reminder_availabiliy()<=0)
+                                int reminder_availabiliy= reminder_availabiliy(Task_ID, current_index, period)
+;
+                                //GetCurrentIndex(reminder_availabiliy_temp);
+                                if(Tj_priority == 6 && reminder_availabiliy <= 0)
                                 {
                                     selected_id=0;
                                     if(current_emplyee_id==femplyee_id)
                                     {
                                         current_emplyee_id=semplyee_id;
-                                        Task_Reschedule(start_index_search,period,Task_ID,current_emplyee_id,femplyee_id,semplyee_id,Deadline,priority);
+                                        Task_Reschedule(start_index_search, Task_ID, period, Deadline,priority, current_emplyee_id, femplyee_id, semplyee_id);
+
                                     }
                                     else
                                     {
@@ -398,7 +402,7 @@ String formattedDate;
                                 if (current_emplyee_id == femplyee_id)
                                 {
                                     current_emplyee_id = semplyee_id;
-                                    Task_Reschedule(start_index_search,period,Task_ID,current_emplyee_id,femplyee_id,semplyee_id,Deadline,priority);
+                                    Task_Reschedule(start_index_search, Task_ID, period, Deadline,priority, current_emplyee_id, femplyee_id, semplyee_id);
                                 }
                                 else 
                                 { 
@@ -413,7 +417,7 @@ String formattedDate;
                             if (current_emplyee_id == femplyee_id)
                             {
                                 current_emplyee_id = semplyee_id;
-                                Task_Reschedule(start_index_search,period,Task_ID,current_emplyee_id,femplyee_id,semplyee_id,Deadline,priority);
+                                Task_Reschedule(start_index_search, Task_ID, period, Deadline,priority, current_emplyee_id, femplyee_id, semplyee_id);
                             }
                             else
                             {
